@@ -1,0 +1,23 @@
+{
+  "name": "slack-weekly-report-bot",
+  "version": "1.0.0",
+  "description": "Slack bot: collect weekly reports → summarize with AI → email PDF",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.17.1",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "markdown-pdf": "^11.0.0",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.15",
+    "openai": "^4.57.3",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
