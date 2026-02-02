@@ -14,7 +14,7 @@ function setupSchedulers() {
     //         await sendDM(
     //             userId,
     //             "Hey! It's Friday 4 PM — please reply with your weekly report (text or PDF/TXT).\n\n" +
-    //             "Suggested:\n*Achievements:*\n*Blockers:*\n*Next week:*"
+    //             "*Achievements:*\n*Blockers:*\n*Next week:*"
     //         );
     //     }
     //     saveReports();
@@ -28,7 +28,7 @@ function setupSchedulers() {
     //             await sendDM(
     //                 userId,
     //                 "Hey! It's Friday 4 PM — please reply with your weekly report (text or PDF/TXT).\n\n" +
-    //                 "Suggested:\n*Achievements:*\n*Blockers:*\n*Next week:*"
+    //                 "*Achievements:*\n*Blockers:*\n*Next week:*"
     //             );
     //         }
     //         saveReports();

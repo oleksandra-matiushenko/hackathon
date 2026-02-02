@@ -18,6 +18,8 @@ const config = {
         'U0ACG2EGLMP', // TODO:add more Slack User IDs
         'U0ACDD95ADB',
         'U0ACGRRE4M8',
+        'U0ADB59677A',
+        'U0ACAEAFD9R',
     ],
     pdfOutputPath: './weekly-summary.pdf',
 };
