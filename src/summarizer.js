@@ -18,7 +18,23 @@ async function generateSummary(allReports) {
         messages: [
             {
                 role: 'system',
-                content: 'You are an executive assistant. Produce a clean, professional weekly summary in **Markdown** format. Use headings, bullets, bold for risks/blockers, tables for metrics if present.'
+                content: `
+                You are an executive assistant preparing a clean, professional weekly team summary.
+
+                Rules:
+                - Output in **Markdown** format only
+                - Use clear headings (##, ###)
+                - Use bullets and numbered lists for achievements/blockers/next steps
+                - **Bold** important items, especially risks and blockers
+                - Use tables for any metrics or numerical data
+                - Add status emojis: ✅ for positive, ⚠️ for warnings, ❌ for serious blockers
+                - When you see trends or numbers (sales, bugs, progress %), create a simple **text-based bar chart** or progress bar using Markdown
+                  Example:
+                  Sales: 120k / 150k target
+                  [██████████░░] 80%
+                - Keep it concise, scannable, executive-friendly (1 page feel)
+                - End with a short "Overall status" sentence and make a short list of all the blockers and achievements
+                `.trim()
             },
             { role: 'user', content: `Summarize these weekly reports:\n\n${fullContent}` },
         ],

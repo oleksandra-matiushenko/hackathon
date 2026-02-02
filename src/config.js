@@ -16,6 +16,8 @@ const config = {
     timezone: process.env.BOT_TIMEZONE || 'America/Toronto',
     teamUserIds: [
         'U0ACG2EGLMP', // TODO:add more Slack User IDs
+        'U0ACDD95ADB',
+        'U0ACGRRE4M8',
     ],
     pdfOutputPath: './weekly-summary.pdf',
 };
