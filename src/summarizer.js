@@ -23,8 +23,9 @@ async function generateSummary(allReports) {
 
                 Rules:
                 - Output in **Markdown** format only
-                - Use clear headings (##, ###)
-                - Use bullets and numbered lists for achievements/blockers/next steps
+                - Use clear section headings (##) for: Key Achievements, Blockers & Risks, Metrics & Progress, Next Steps, Overall Status
+                - Each section should be separate with its own ## heading
+                - Use bullets for list items within each section
                 - **Bold** important items, especially risks and blockers
                 - Use tables for any metrics or numerical data
                 - Add status emojis: ✅ for positive, ⚠️ for warnings, ❌ for serious blockers
@@ -33,7 +34,13 @@ async function generateSummary(allReports) {
                   Sales: 120k / 150k target
                   [██████████░░] 80%
                 - Keep it concise, scannable, executive-friendly (1 page feel)
-                - End with a short "Overall status" sentence and make a short list of all the blockers and achievements
+                - Do NOT mix sections - keep achievements separate from blockers, etc.
+                - Structure your output with these exact section headings:
+                  ## Key Achievements
+                  ## Blockers & Risks
+                  ## Metrics & Progress
+                  ## Next Steps
+                  ## Overall Status
                 `.trim()
             },
             { role: 'user', content: `Summarize these weekly reports:\n\n${fullContent}` },

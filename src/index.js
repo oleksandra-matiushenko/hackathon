@@ -86,7 +86,7 @@ app.command('/summarize', async ({ ack, respond, logger }) => {
         });
 
         const markdown = await generateSummary(reports);
-        const pdfPath = await createPdfFromMarkdown(markdown);
+        const pdfPath = await createPdfFromMarkdown(markdown, reports);
         await sendEmailWithPdf(pdfPath, markdown);
 
         await respond({
