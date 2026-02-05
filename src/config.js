@@ -20,6 +20,7 @@ const config = {
         'U0ACGRRE4M8',
         'U0ADB59677A',
         'U0ACAEAFD9R',
+        'U0ACS1GGWUX',
     ],
     pdfOutputPath: './weekly-summary.pdf',
 };

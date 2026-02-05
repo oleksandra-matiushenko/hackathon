@@ -105,6 +105,9 @@ function applyTemplate(summaryContent, allReports = null) {
     const date = formatDate();
     const weekEnding = getWeekEnding();
     
+    // Use the URL directly - markdown-pdf can handle URLs
+    const logoUrl = 'https://cleargov.com/assets/2w1wm7vX-ClearGov-Logo.svg';
+    
     // Try to extract specific sections from the AI summary
     // Use broader keyword matching to catch variations
     // Exclude conflicting keywords to prevent cross-contamination
@@ -137,6 +140,7 @@ function applyTemplate(summaryContent, allReports = null) {
     const individualStatuses = formatIndividualStatuses(allReports);
     
     let result = pdfTemplate
+        .replace('{{LOGO_PATH}}', logoUrl)
         .replace('{{DATE}}', date)
         .replace('{{WEEK_ENDING}}', weekEnding)
         .replace('{{ACHIEVEMENTS}}', achievements)
@@ -160,8 +164,51 @@ async function createPdfFromMarkdown(summaryMarkdown, allReports = null) {
     // Apply template to wrap the summary with consistent structure
     const fullMarkdown = applyTemplate(summaryMarkdown, allReports);
 
+    // CSS for better PDF styling, especially for images
+    const cssPath = path.join(__dirname, 'templates', 'pdf-styles.css');
+    let cssOptions = {};
+    
+    // Add CSS if file exists, otherwise use inline styles
+    if (fs.existsSync(cssPath)) {
+        cssOptions.cssPath = cssPath;
+    } else {
+        // Use CSS string for image styling
+        cssOptions.css = `
+            img {
+                max-width: 120px !important;
+                width: 120px !important;
+                height: auto !important;
+                display: block !important;
+                margin: 10px auto 20px auto !important;
+            }
+            div img {
+                max-width: 120px !important;
+                width: 120px !important;
+                height: auto !important;
+                display: block !important;
+                margin: 10px auto 20px auto !important;
+            }
+            p img {
+                max-width: 120px !important;
+                width: 120px !important;
+                height: auto !important;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+        `;
+    }
+
     return new Promise((resolve, reject) => {
-        markdownpdf()
+        const pdfOptions = {
+            ...cssOptions,
+            paperFormat: 'Letter',
+            paperOrientation: 'portrait',
+            paperBorder: '1cm'
+        };
+        
+        markdownpdf(pdfOptions)
             .from.string(fullMarkdown)
             .to(pdfPath, (err) => {
                 if (err) return reject(err);

@@ -1,3 +1,5 @@
+![ClearGov Logo]({{LOGO_PATH}})
+
 # Weekly Team Report Summary
 
 **Report Date:** {{DATE}}  
